@@ -13,7 +13,7 @@ ai_model = st.radio("사용할 AI 모델을 선택하세요", ["GPT-4", "Claude 
 tone = st.selectbox("답변의 말투를 골라주세요", ["친절하게", "냉철하게", "유머러스하게"])
 features = st.multiselect("추가 기능을 선택하세요", ["뭘봐", "자신있냐?", "싸울래?", "뒤질라꼬"])
 creativity = st.slider("AI의 창의성 수준을 설정하세요", 0, 100, 50)
-ai_speed = st.select_slider("응답 처리 속도를 선택하세요",options=["ㅈㄴ느림", "뭐_평범하게_느림", "애매모호함_ㅇㅇ", "나쁘지_않은_정도임", "ㅈㄴ빠름"],value="애매모호함_ㅇㅇ")
+ai_speed = st.select_slider("응답 처리 속도를 선택하세요",options=["ㅈㄴ느림", "뭐_평범하게_느림", "애매모호함 ㅇㅇ", "나쁘지_않은_정도임", "ㅈㄴ빠름"],value="애매모호함 ㅇㅇ")
 agree = st.checkbox("개인정보 수집 및 AI 학습 이용에 동의합니다.")
 st.markdown("---")
 
