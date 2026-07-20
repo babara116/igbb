@@ -22,7 +22,7 @@ with col2:
             st.session_state.end_time = time.time()
             # 걸린 시간 계산 (종료 시간 - 시작 시간)
             st.session_state.result = st.session_state.end_time - st.session_state.start_time
-            remove(st.button("종료"))
+            pop(st.button("종료"))
         else:
             st.warning("시작 버튼을 먼저 눌러주세요!")
 
