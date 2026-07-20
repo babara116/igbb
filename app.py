@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.header("1. 기본 정보 입력")
+st.title("앱 UI 만들기")
 user_id = st.text_input("이름", placeholder="이름")
 grade = st.radio("학년", ["1", "2", "3"], horizontal=True)
 age = st.number_input("반", min_value=1, max_value=11, value=1)
