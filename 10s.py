@@ -22,8 +22,19 @@ with col2:
             st.session_state.end_time = time.time()
             # 걸린 시간 계산 (종료 시간 - 시작 시간)
             st.session_state.result = st.session_state.end_time - st.session_state.start_time
-            pop(st.button("종료"))
-        else:
+        if 'target_visible' not in st.session_state:
+            st.session_state.target_visible = True
+
+        def delete_target():
+            st.session_state.target_visible = False
+
+        # 삭제 대상 버튼
+        if st.session_state.target_visible:
+            st.button("종료")
+
+        # 제어 버튼
+        st.button("위의 버튼 삭제하기", on_click=delete_target)
+                else:
             st.warning("시작 버튼을 먼저 눌러주세요!")
 
 if st.session_state.end_time != 0:
