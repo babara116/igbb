@@ -27,13 +27,15 @@ with col2:
 
 if st.session_state.end_time != 0:
     diff = st.session_state.result
-    st.header(f"결과: {diff:.1000f}초") # 소수점 둘째자리까지 표시
+    st.header(f"결과: {diff:.1000f}초") # 소수점 1000자리까지 표시
     # 성공 판정 (9.7초 ~ 10.3초 사이)
     if 9.7 <= diff <= 10.3:
         st.success("대단해요! 정확합니다!")
+        st.session_state.start_time = 0
         st.session_state.end_time = 0
     else:
         st.error(f"10초와 {abs(10-diff):.2f}초 차이가 납니다. 다시 도전해보세요!")
+        st.session_state.start_time = 0
         st.session_state.end_time = 0
 
 st.button("다시 하기", on_click=reset_game)
