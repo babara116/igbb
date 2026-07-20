@@ -19,5 +19,5 @@ with col1:
     
 with col2:
     st.subheader("하의")
-    bottom_type = st.radio("종류", ["슬랙스", "트레이닝 팬츠", "반바지"])
+    bottom_type = st.radio("종류", ["슬랙스", "트레이닝 팬츠", "반바지", "청바지"])
     bottom_color = st.select_slider("핏(fit)", options=["슬림", "레귤러", "오버핏"])
