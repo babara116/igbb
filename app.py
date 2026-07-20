@@ -11,8 +11,7 @@ ai_speed = st.select_slider("난이도",options=["쉬움", "약간 애매", "보
 creativity = st.slider("점수", 0, 100, 50)
 question = st.text_area("소감", placeholder="소감.")
 
-if st.button("확"):
-    if agree:
-        st.success(f"{user_id}/{grade}/{age}/{ai_speed}")
-        st.markdown("점수: `{creativity}`")
-        st.info(f"소감: {question}")
+if st.button("확인"):
+    st.success(f"{user_id}/{grade}/{age}/{ai_speed}")
+    st.markdown("점수: `{creativity}`")
+    st.info(f"소감: {question}")
