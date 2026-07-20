@@ -4,7 +4,7 @@ with st.sidebar:
     st.header("프로필")
     user_name = st.text_input("닉네임")
     weather = st.selectbox("오늘 날씨", ["맑음", "흐림", "비/눈", "매우 추움"])
-    st.mardown("---")
+    st.markdown("---")
     st.info(f"반가워요, {user_name}님! 오늘 날씨는 `{weather}`이네요.")
 
 st.title("ai 코디 메이커")
