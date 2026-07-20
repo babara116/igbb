@@ -9,14 +9,15 @@ with st.sidebar:
 
 st.title("ai 코디 메이커")
 st.write("사이드바에서 날씨를 먼저 선택하고 코디를 시작하세요!")
+
 st.header("아이템 조합하기")
-co11, co12 = st.columns(2)
-with co11:
+col1, col2 = st.columns(2)
+with col1:
     st.subheader("상의")
     top_type = st.radion("종류", ["후드티", "셔츠", "맨투맨", "반팔 티셔츠"])
     top_color = st.select_slider("색상 톤", options=["밝음", "무난함, "어두움"])
     
-with co12:
+with col2:
     st.subheader("하의")
     bottom_type = st.radio("종류", ["슬랙스", "트레이닝 팬츠", "반바지"])
     bottom_color = st.select_slider("핏(fit)", options=["슬림", "레귤러", "오버핏"])
