@@ -13,5 +13,5 @@ question = st.text_area("소감", placeholder="소감.")
 
 if st.button("확인"):
     st.success(f"{user_id} / {grade}학년 / {age}반 / {ai_speed}")
-    st.markdown("점수: `{creativity}`")
+    st.markdown(f"점수: `{creativity}`")
     st.info(f"소감: {question}")
