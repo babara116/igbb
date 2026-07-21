@@ -96,7 +96,7 @@ if question:
         st.markdown(question)
     with st.chat_message("assistant"):
         prompt = st.session_state.messages
-        with st.spinner("ai도 생각할 시간이필요함")
+        with st.spinner("ai도 생각할 시간이필요함"):
             response = ai_clinet.chat.copletions.create(
                 model="gpt-5.4-mini",
                 messages=prompt)
