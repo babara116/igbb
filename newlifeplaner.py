@@ -85,7 +85,7 @@ def page_ai_coach():
         ]
     
     for messages in st.session_state.messages:
-        if message["role"] != "system":
+        if messages["role"] != "system":
             with st.chat_message(message["role"]):
                 st.markdwon(message["content"])
 
