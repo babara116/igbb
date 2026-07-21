@@ -86,8 +86,8 @@ def page_ai_coach():
     
     for messages in st.session_state.messages:
         if messages["role"] != "system":
-            with st.chat_message(message["role"]):
-                st.markdwon(message["content"])
+            with st.chat_message(messages["role"]):
+                st.markdwon(messages["content"])
 
 question = st. chat_input("질문 함 씨부려봐라")
 if question:
