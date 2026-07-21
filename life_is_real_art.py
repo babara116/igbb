@@ -19,39 +19,73 @@ with st.sidebar:
     st.info(f"반가워요, {user_name}님! 오늘 날씨는 '{weather}'이네요. 당신의 기분은 '{feel}'이신가요? 그렇다면 이 기분과 '{with_whom}'일때에 맞는 노래와 음식을 추천해 드릴게요!")
 
 if st.button("✨ 맞춤 추천 받기", use_container_width=True):
-    prompt = f"""기분이랑 날씨와 누구랑 있는지에 따라서 어떤 노래를 추천해 주셨으면 좋겠어요! 아래 사용자와 적합한 노래 3곡을 추천해주세요! 
-        [사용자 상황]
+    prompt = f"""
+    기분이랑 날씨, 함께 있는 사람, 그리고 원하는 장르({genre})에 따라 음식과 노래 3곡을 추천해주세요!
+    
+    [사용자 상황]
     - 날씨: {weather}
     - 함께 있는 사람: {with_whom}
     - 현재 기분: {feel}
+    - 선호 장르: {genre}
     - 추가 정보: {extra_info if extra_info else '없음'}
 
     [출력 형식]
     1. 🍽️ **오늘의 추천 음식**: (음식 이름)
        - 추천 이유: (다정한 어조로 2~3줄 설명)
+
     2. 🎵 **기분 맞춤 플레이리스트**:
-       - 곡 1: 가수 - *노래 제목*
-         (추천 이유 한 줄)          <---여기는 노래제목이랑 추천이유는 꼭 칸을 나눠주세요
-       - 곡 2: 가수 - *노래 제목*
-         (추천 이유 한 줄)
-       - 곡 3: 가수 - *노래 제목*
-         (추천 이유 한 줄)
-    3. 음악의 배경 지식과 이러한 음악 선정의 이유를 간단하게 설명해서 유튜브의 영상을 넣어서 바로 틀수있게 마무리 해줘
-    
+       - 곡 1: [가수 - 노래 제목]
+         > 추천 이유: (줄바꿈 후 한 줄 설명)
+       - 곡 2: [가수 - 노래 제목]
+         > 추천 이유: (줄바꿈 후 한 줄 설명)
+       - 곡 3: [가수 - 노래 제목]
+         > 추천 이유: (줄바꿈 후 한 줄 설명)
+
+    3. 💡 **음악 배경 지식 & 선곡 이유**:
+       (설명 작성)
     """
 
-with st.spinner("당신의 기분에 딱 맞는 조합을 찾고 있어요... 🔮"):
+    # 2. 버튼 안쪽(들여쓰기 적용)에서 API 호출 및 spinner 실행
+    with st.spinner("당신의 기분에 딱 맞는 조합을 찾고 있어요... 🔮"):
         try:
             response = ai_client.chat.completions.create(
                 model="gpt-4o-mini",
-                messages=[{"role": "user", "content": prompt}]
+                messages=[{"role": "user", "content": prompt}],
             )
-            
-            # 결과 출력
+
             result = response.choices[0].message.content
-            
+
             st.success("🎉 추천이 도착했습니다!")
             st.markdown(result)
-            
+
+            st.markdown("---")
+            st.subheader("🎬 추천된 노래 바로 듣기")
+
+            import re
+
+            songs = re.findall(r"\[(.*?)\]", result)
+
+            if songs:
+                for song in songs:
+                    encoded_song = urllib.parse.quote(f"{song} 오피셜 음원")
+                    yt_url = f"https://www.youtube.com/results?search_query={encoded_song}"
+
+                    with st.expander(f"🎵 '{song}' 바로 재생 링크 & 검색"):
+                        st.write(
+                            f"클릭하면 **{song}**의 최신 음원/뮤직비디오를 바로 들으실 수 있습니다."
+                        )
+                        st.link_button(
+                            f"▶️ YouTube에서 {song} 바로 틀기",
+                            yt_url,
+                            use_container_width=True,
+                        )
+            else:
+                default_url = f"https://www.youtube.com/results?search_query={urllib.parse.quote(genre + ' 추천 노래')}"
+                st.link_button(
+                    "▶️ YouTube에서 플레이리스트 틀기",
+                    default_url,
+                    use_container_width=True,
+                )
+
         except Exception as e:
             st.error(f"오류가 발생했습니다: {e}")
