@@ -19,7 +19,7 @@ with st.sidebar:
     st.info(f"반가워요, {user_name}님! 오늘 날씨는 '{weather}'이네요. 당신의 기분은 '{feel}'이신가요? 그렇다면 이기분과 '{with_whom}'일때에 맞는 노래와 음식을 추천해 드릴게요!")
 
 if st.button("✨ 맞춤 추천 받기", use_container_width=True):
-    prompt(f"""기분이랑 날씨와 누구랑 있는지에 따라서 어떤 노래를 추천해 주셨으면 좋겠어요! 아래 사용자와 적합한 노래 3곡을 추천해주세요! 
+    prompt = f"""기분이랑 날씨와 누구랑 있는지에 따라서 어떤 노래를 추천해 주셨으면 좋겠어요! 아래 사용자와 적합한 노래 3곡을 추천해주세요! 
         [사용자 상황]
     - 날씨: {weather}
     - 함께 있는 사람: {with_whom}
@@ -35,7 +35,7 @@ if st.button("✨ 맞춤 추천 받기", use_container_width=True):
        - 곡 3: 가수 - 노래 제목 (추천 이유 한 줄)
     3. 음악의 배경 지식과 이러한 음악 선정의 득
     
-    """)
+    """
 
 with st.spinner("당신의 기분에 딱 맞는 조합을 찾고 있어요... 🔮"):
         try:
