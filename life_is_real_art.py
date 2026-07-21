@@ -14,4 +14,5 @@ with st.sidebar:
     weather = st.selectbox("오늘 날씨", ["맑음", "흐림", "비/눈", "매우 추움", "매우 더움"], key="weather")
     feel = st.selectbox("당신의 기분은 어떤가요?",["최악 😭", "우울/지침 😮‍💨", "평범 😐", "기분 좋음 😊", "텐션 최고! 🥳"])
     st.markdown("---")
-    st.info(f"반가워요, {user_name}님! 오늘 날씨는 '{weather}'이네요."\n "당신의 기분은 '{feel}'이신가요? 이에 맞는 노래와 음식을 추천해 드릴게요!")
+    st.info(f"반가워요, {user_name}님! 오늘 날씨는 '{weather}'이네요."\n)
+    st.info(f"당신의 기분은 '{feel}'이신가요? 이에 맞는 노래와 음식을 추천해 드릴게요!")
