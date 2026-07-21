@@ -60,6 +60,6 @@ def page_mygodlifenumber():
             st.session_state.todo_list = []
             st.rerun()
 pg = st.navigation([
-    st.page(page_title, title="오늘의 다짐"),
-    st.page(page_todaywork, title="오늘 할 일"),
-    st.page(page_mygodlifenumber, title="나의 갓생 지수")])
+    st.Page(page_title, title="오늘의 다짐"),
+    st.Page(page_todaywork, title="오늘 할 일"),
+    st.Page(page_mygodlifenumber, title="나의 갓생 지수")])
