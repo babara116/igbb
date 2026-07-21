@@ -16,7 +16,7 @@ with st.sidebar:
     genre = st.selectbox("🎶 어떤 장르의 노래를 듣고싶나요?", ["힙합", "발라드", "트로트", "팝송","동요"])
     extra_info = st.text_input("💡 추가로 들려주고 싶은 이야기가 있나요? (선택)", placeholder="예: 오늘 시험이 끝났어요, 외국 힙합이 듣고싶어요 등")
     st.markdown("---")
-    st.info(f"반가워요, {user_name}님! 오늘 날씨는 '{weather}'이네요. 당신의 기분은 '{feel}'이신가요? 그렇다면 이기분과 '{with_whom}'일때에 맞는 노래와 음식을 추천해 드릴게요!")
+    st.info(f"반가워요, {user_name}님! 오늘 날씨는 '{weather}'이네요. 당신의 기분은 '{feel}'이신가요? 그렇다면 이 기분과 '{with_whom}'일때에 맞는 노래와 음식을 추천해 드릴게요!")
 
 if st.button("✨ 맞춤 추천 받기", use_container_width=True):
     prompt = f"""기분이랑 날씨와 누구랑 있는지에 따라서 어떤 노래를 추천해 주셨으면 좋겠어요! 아래 사용자와 적합한 노래 3곡을 추천해주세요! 
