@@ -79,7 +79,7 @@ def page_report():
 
 def page_ai_coach():
     st.header("AI코치와 대화하기")
-    if "messages" not in st.sxession_state:
+    if "messages" not in st.session_state:
         st.session_state.messages = [
             {"role": "system", "content": "너는 사용자의 할 일 목록과 달성 정도를 분석 뭐시기 뭐 암튼 그래 어짜피 너 여기까지 안읽을거잖"}
         ]
