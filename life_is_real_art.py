@@ -2,7 +2,6 @@ import streamlit as st
 from openai import OpenAI
 
 #ai_client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-st.session_state.user_name
 st.set_page_config(page_title="기분 맞춤 추천기", page_icon="🍕", layout="centered")
 
 st.title("🎧 오늘 뭐 먹고 뭐 듣지?")
