@@ -1,6 +1,14 @@
 import streamlit as st
 from openai import OpenAI
 
+def reset_all():
+    st.session_state.user_name = ""
+    st.session_state.weather = "☀️ 화창하고 밝음"
+    st.session_state.feel = "텐션 최고! 🥳"
+    st.session_state.genre = "힙합"
+    st.session_state.with_whom = "👤 나 혼자만의 시간"
+    st.session_state.extra_info = ""
+
 ai_client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 st.set_page_config(page_title="기분 맞춤 추천기", page_icon="🍕", layout="centered")
 
@@ -89,3 +97,4 @@ if st.button("✨ 맞춤 추천 받기", use_container_width=True):
 
         except Exception as e:
             st.error(f"오류가 발생했습니다: {e}")
+st.button("전체 초기화", on_click=reset_all)
