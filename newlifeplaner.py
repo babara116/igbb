@@ -79,14 +79,30 @@ def page_report():
 
 def page_ai_coach():
     st.header("AI코치와 대화하기")
-    prompt = st.text_input("질문하기")
-    if st.botton("보내기"):
-        response = ai_client.responses.create(
-            model="gpt-5.4-mini",
-            input=prompt
-        )
-        st.write(response.output_text)
+    if "messages" not in st.sxession_state:
+        st.session_state.messages = [
+            {"role": "system", "content": "너는 사용자의 할 일 목록과 달성 정도를 분석 뭐시기 뭐 암튼 그래 어짜피 너 여기까지 안읽을거잖"}
+        ]
     
+    for messages in st.session_state.messages:
+    if message["role"] != "system":
+        with st.chat_message(message["role"]):
+            st.markdwon(message["content"])
+
+question = st. chat_input("질문 함 씨부려봐라")
+if question:
+    st.session_state.messages.append({"role": "uesr", "content": question})
+    with st.chat_message("user"):
+        st.markdown(question)
+    with st.chat_message("assistant"):
+        prompt = st.session_state.messages
+        with st.spinner("ai도 생각할 시간이필요함")
+            response = ai_clinet.chat.copletions.create(
+                model="gpt-5.4-mini",
+                messages=prompt)
+        ai_response = response.choices[0].message.content
+        st.markdown(ai_response)
+    st.session_state.messages.append({"role": "assistant", "content": ai_response})
 pg = st.navigation([
     st.Page(page_motto, title="오늘의 다짐", icon="📣"),
     st.Page(page_todo, title="오늘의 할 일", icon="✅"),
