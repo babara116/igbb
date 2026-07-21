@@ -62,5 +62,5 @@ def page_mygodlifenumber():
 pg = st.navigation([
     st.Page(page_title, title="오늘의 다짐"),
     st.Page(page_todaywork, title="오늘 할 일"),
-    st.Page(page_mygodlifenumber, title="나의 갓생 지수")])
+    st.Page(page_mygodlifenumber, title="나의 갓생 지수")],position="top")
 pg.run()
